@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FoodHub - Premium Fast Food</title>
+
+<!-- ADVANCED GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* PREMIUM COLOR PALETTE & RESET */
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body{
+font-family: 'Poppins', Arial, sans-serif;
+background: #fdfaf7; 
+color: #1e293b; 
+overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #be123c; 
+padding: 20px 80px;
+box-shadow: 0 4px 20px rgba(190, 18, 60, 0.15);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.logo{
+font-size: 32px;
+font-weight: 800;
+color: white;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+.nav-links a{
+text-decoration: none;
+color: white;
+margin-left: 30px;
+font-size: 18px;
+font-weight: 600;
+transition: color 0.3s ease;
+}
+
+.nav-links a:hover{
+color: #f59e0b; 
+}
+
+.nav-links a.active {
+    color: #f59e0b;
+    border-bottom: 3px solid #f59e0b;
+    padding-bottom: 5px;
+}
+
+/* IMMERSIVE HERO VIDEO SECTION */
+.hero-video-container {
+    position: relative;
+    width: 100%;
+    height: 85vh; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000; 
+}
+
+/* DIRECT LOCAL VIDEO CONFIGURATION */
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* CLEARER, LIGHTER OVERLAY FOR GREATER VIDEO VISIBILITY */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.35), rgba(190, 18, 60, 0.25));
+    z-index: 2;
+}
+
+/* FLOATING GLASS CARD WITH REINFORCED TEXT READABILITY */
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 850px;
+    padding: 60px 40px;
+    margin: 0 20px;
+    background: rgba(15, 23, 42, 0.45); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 35px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.hero-content h1 {
+    font-size: 58px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+}
+
+.hero-content h1 span {
+    color: #f59e0b; 
+}
+
+.hero-content p {
+    font-size: 19px;
+    color: #f8fafc;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* AUDIO CONTROL TOGGLE BUTTON */
+.audio-btn {
+    display: inline-block;
+    margin-bottom: 25px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+}
+
+.audio-btn:hover {
+    background: #f59e0b;
+    border-color: #f59e0b;
+    color: white;
+}
+
+/* SHARP ACTION BUTTONS */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #be123c;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(190, 18, 60, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    background: white;
+    color: #be123c;
+    transform: translateY(-4px);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #f59e0b;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #f59e0b;
+    transform: translateY(-4px);
+}
+
+/* VALUE HIGHLIGHT CARDS */
+.features-section {
+    background: #ffffff;
+    padding: 90px 20px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+    color: #be123c;
+    margin-bottom: 50px;
+}
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: #fffdfb;
+    border: 1px solid #f1f5f9;
+    width: 340px;
+    padding: 50px 30px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: #f59e0b;
+    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.12);
+}
+
+.feature-card h3 {
+    color: #f59e0b;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.feature-card p {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+.footer{
+background: #0f172a; 
+color: #94a3b8;
+text-align: center;
+padding: 50px 20px;
+border-top: 5px solid #be123c;
+}
+
+.footer h2{
+color: white;
+font-size: 28px;
+margin-bottom: 8px;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 900px) {
+.navbar { padding: 20px; flex-direction: column; gap: 15px; }
+.nav-links a { margin: 0 10px; }
+.hero-video-container { height: auto; padding: 80px 0; }
+.hero-content { padding: 40px 20px; }
+.hero-content h1 { font-size: 38px; }
+.hero-content p { font-size: 16px; }
+.hero-buttons { flex-direction: column; gap: 15px; }
+.feature-card { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<div class="navbar">
+<div class="logo">FoodHub</div>
+<div class="nav-links">
+<a href="Untitled-1.html" class="active">Home</a>
+<a href="Untitled-2.html">Menu</a>
+<a href="untitle 3.html">About</a>
+<a href="Untitled-4.html">Contact</a>
+</div>
+</div>
+
+<!-- HERO BANNER CONTAINER -->
+<div class="hero-video-container">
+    
+    <!-- MUTED REMOVED TO ENABLE SOUND CHANNELS -->
+    <video id="burgerVideo" class="bg-video" autoplay loop playsinline>
+        <source src="burger.mp4" type="video/mp4">
+        <source src="burger.mov" type="video/quicktime">
+        <source src="burger.webm" type="video/webm">
+        Your browser does not support HTML5 video loops.
+    </video>
+    
+    <div class="video-overlay"></div>
+    
+    <div class="hero-content">
+        <h1>Satisfy Your Cravings <span>Instantly!</span></h1>
+        <p>Welcome to FoodHub, where elite culinary craftsmanship meets flash delivery. Experience premium flame-grilled burgers, cheese-loaded pizzas, and rich authentic Italian pastas prepared raw and fresh to your doorstep.</p>
+        
+        <!-- BROWSER BYPASS BUTTON FOR SOUND ACTIVATION -->
+        <button class="audio-btn" id="audioToggle" onclick="toggleSound()">Unmute Video Audio</button>
+
+        <div class="hero-buttons">
+            <a href="Untitled-2.html" class="btn-primary">Explore Menu</a>
+            <a href="untitle 3.html" class="btn-secondary">Our Story</a>
+        </div>
+    </div>
+</div>
+
+<!-- VALUE HIGHLIGHTS -->
+<div class="features-section">
+    <h2 class="section-title">Why True Foodies Choose FoodHub</h2>
+    <div class="features-container">
+        
+        <div class="feature-card">
+            <h3>PREMIUM QUALITY</h3>
+            <p>We source 100% natural, top-shelf fresh ingredients daily to guarantee an unparalleled flavor blast in every single bite.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>EXPRESS DELIVERY</h3>
+            <p>Our dedicated internal mobile fleet handles your meals with hyper-care and rushes directly to your door within 30 minutes.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>UNBEATABLE VALUE</h3>
+            <p>High-end restaurant quality fast-food balanced perfectly with elite bundle configurations to maximize your wallet savings.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<h2>FoodHub International</h2>
+<p style="margin-top:10px; font-size:14px; letter-spacing:1px; color:#f59e0b;">Fresh Food | Fast Delivery | Best Taste</p>
+</div>
+
+<!-- BACK TO TOP CONTROL -->
+<button id="backToTop" onClick="scrollToTop()" style="position: fixed; bottom: 25px; right: 25px; padding: 15px 18px; background: #be123c; color: white; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 2000;">UP</button>
+
+<!-- JAVASCRIPT SOUND ENGINE -->
+<script>
+// Start video muted safely to pass browser check, then allow user toggle
+const video = document.getElementById('burgerVideo');
+video.muted = true;
+
+function toggleSound() {
+    const btn = document.getElementById('audioToggle');
+    if (video.muted) {
+        video.muted = false;
+        video.play();
+        btn.innerText = "Mute Video Audio";
+    } else {
+        video.muted = true;
+        btn.innerText = "Unmute Video Audio";
+    }
+}
+
+window.onscroll = function() {
+    let btn = document.getElementById("backToTop");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>

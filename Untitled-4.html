@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FoodHub - Contact Us</title>
+
+<!-- ADVANCED GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* MODERN RESET & BASE STYLES */
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body{
+font-family: 'Poppins', Arial, sans-serif;
+background: #fff8f0;
+color: #333;
+overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #d92323;
+padding: 20px 80px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.logo{
+font-size: 32px;
+font-weight: 800;
+color: white;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+.nav-links a{
+text-decoration: none;
+color: white;
+margin-left: 30px;
+font-size: 18px;
+font-weight: 600;
+transition: color 0.3s ease;
+}
+
+.nav-links a:hover{
+color: #ffcc00;
+}
+
+/* ACTIVE NAV LINK INDICATOR */
+.nav-links a.active {
+    color: #ffcc00;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 5px;
+}
+
+/* CONTACT SECTION DESIGN */
+.contact-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 55px;
+    font-weight: 800;
+    color: #d92323;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.subheading {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.contact-grid {
+    display: flex;
+    gap: 40px;
+    background: white;
+    padding: 45px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+}
+
+.contact-form {
+    flex: 1.3;
+}
+
+.contact-form h2 {
+    font-size: 28px;
+    color: #ff6600;
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #444;
+    font-size: 15px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #efeae4;
+    background: #fffcf8;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #ff6600;
+    background: white;
+    box-shadow: 0 5px 15px rgba(255,102,0,0.08);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: #d92323;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(217,35,35,0.25);
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #111;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* INFO CONTAINER */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-card {
+    background: #fffcf8;
+    border: 1px solid #efeae4;
+    padding: 25px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.info-card h3 {
+    color: #d92323;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* CONNECT BUTTONS */
+.quick-connect {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.connect-btn {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 12px;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.connect-btn:hover {
+    transform: scale(1.03);
+}
+
+.btn-whatsapp { background: #25D366; }
+.btn-call { background: #007AFF; }
+
+.map-container {
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    flex-grow: 1;
+    min-height: 250px;
+}
+
+/* FAQ ACCORDION */
+.faq-section {
+    max-width: 1200px;
+    margin: 40px auto 80px auto;
+    padding: 0 20px;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #d92323;
+    margin-bottom: 30px;
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 20px 25px;
+    font-weight: 700;
+    font-size: 17px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    background: white;
+}
+
+.faq-question:hover {
+    background: #fffcf8;
+}
+
+.faq-arrow {
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+.footer{
+background: #111;
+color: #aaa;
+text-align: center;
+padding: 40px 20px;
+border-top: 5px solid #d92323;
+}
+
+.footer h2{
+color: white;
+font-size: 26px;
+margin-bottom: 5px;
+}
+
+@media (max-width: 900px) {
+.navbar { padding: 20px; flex-direction: column; gap: 15px; }
+.nav-links a { margin: 0 10px; }
+.heading { font-size: 40px; }
+.contact-grid { flex-direction: column; padding: 25px; }
+.quick-connect { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">FoodHub</div>
+<div class="nav-links">
+<a href="Untitled-1.html">Home</a>
+<a href="Untitled-2.html">Menu</a>
+<a href="untitle 3.html">About</a>
+<a href="Untitled-4.html" class="active">Contact</a>
+</div>
+</div>
+
+<div class="contact-section">
+    <h1 class="heading">Get In Touch</h1>
+    <p class="subheading">Have questions about an order or want to share feedback? We are here to listen.</p>
+    
+    <div class="contact-grid">
+        
+        <!-- CONTACT FORM -->
+        <div class="contact-form">
+            <h2>Send Us A Message</h2>
+            <form onSubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully.'); this.reset();">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Message</label>
+                    <textarea rows="4" placeholder="How can we help you today?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+        
+        <!-- INFO CARDS (NO BREAKABLE EMOJIS) -->
+        <div class="contact-info">
+            
+            <div class="info-card">
+                <h3>LOCATION: Our Main Kitchen</h3>
+                <p>Food Court Lane, Block-C, Main Boulevard, Pakistan</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>HOURS: Operational Hours</h3>
+                <p>Monday - Sunday: 11:00 AM - 02:00 AM</p>
+            </div>
+
+            <!-- BUTTON ACTIONS -->
+            <div class="quick-connect">
+                <a href="https://wa.me/923001234567" target="_blank" class="connect-btn btn-whatsapp">WhatsApp Chat</a>
+                <a href="tel:+923001234567" class="connect-btn btn-call">Call Helpline</a>
+            </div>
+            
+            <!-- GOOGLE MAP -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.328392150393!2d73.047912!3d33.684422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQxJTAzLjgiTiA3M8KwMDInNTIuNCJF!5e0!3m2!1sen!2s!4v1625000000000!5m2!1sen!2s" 
+                width="100%" height="100%" style="border:0; min-height: 250px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FAQ ACCORDION -->
+<div class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">What is your delivery coverage radius? <span class="faq-arrow">MORE</span></div>
+        <div class="faq-answer"><p style="padding-bottom: 20px;">We offer hot, fast bike delivery anywhere within a 12km radius of our main kitchen branch. Delivery is completely free for orders valued over Rs. 1500!</p></div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">What payment options do you support? <span class="faq-arrow">MORE</span></div>
+        <div class="faq-answer"><p style="padding-bottom: 20px;">Currently, we accept Cash on Delivery (COD), direct JazzCash/EasyPaisa mobile transactions, and all major standard bank debit or credit cards upon point-of-sale checkout.</p></div>
+    </div>
+</div>
+
+<div class="footer">
+<h2>FoodHub Support</h2>
+<p style="margin-top:10px; font-size:14px; letter-spacing:1px;">Fresh Food | Fast Delivery | Best Taste</p>
+</div>
+
+<!-- DROPDOWN TOGGLE ENGINE -->
+<script>
+function toggleFaq(element) {
+    const answer = element.nextElementSibling;
+    const arrow = element.querySelector('.faq-arrow');
+    
+    if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+        answer.style.maxHeight = '0px';
+        answer.style.paddingTop = '0px';
+        arrow.textContent = 'MORE';
+    } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        arrow.textContent = 'LESS';
+    }
+}
+</script>
+
+</body>
+</html>

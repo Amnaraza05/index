@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FoodHub - Menu & Deals</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght=400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* MODERN RESET & BASE STYLES */
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body{
+font-family: 'Poppins', Arial, sans-serif;
+background: #fff8f0;
+color: #333;
+overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #d92323;
+padding: 20px 80px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.logo{
+font-size: 32px;
+font-weight: 800;
+color: white;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+.nav-links a{
+text-decoration: none;
+color: white;
+margin-left: 30px;
+font-size: 18px;
+font-weight: 600;
+transition: color 0.3s ease;
+}
+
+.nav-links a:hover{
+color: #ffcc00;
+}
+
+.nav-links a.active {
+    color: #ffcc00;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 5px;
+}
+
+/* HEADINGS */
+.heading{
+text-align: center;
+font-size: 50px;
+font-weight: 800;
+color: #d92323;
+margin-top: 60px;
+letter-spacing: -1px;
+}
+
+.section-divider {
+    text-align: center;
+    margin: 30px auto;
+    width: 80px;
+    height: 5px;
+    background: #ff6600;
+    border-radius: 10px;
+}
+
+/* FOOD & DEALS CONTAINERS */
+.food-container{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 35px;
+padding: 30px 20px 60px 20px;
+max-width: 1300px;
+margin: 0 auto;
+}
+
+/* MODERN CARD DESIGN */
+.food-card{
+background: white;
+width: 280px;
+border-radius: 25px;
+overflow: hidden;
+box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+border: 1px solid rgba(0,0,0,0.03);
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+}
+
+.food-card:hover{
+transform: translateY(-12px) scale(1.02);
+box-shadow: 0px 15px 30px rgba(255, 102, 0, 0.25); 
+border: 1px solid #ff6600;
+}
+
+/* HOT DEAL BADGE */
+.deal-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ff6600;
+    color: white;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 20px;
+    z-index: 10;
+    text-transform: uppercase;
+    box-shadow: 0 5px 10px rgba(255,102,0,0.3);
+}
+
+.food-card img{
+width: 100%;
+height: 220px;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+
+.food-card:hover img {
+transform: scale(1.04);
+}
+
+.food-info{
+padding: 25px 20px;
+text-align: center;
+}
+
+.food-info h2{
+color: #d92323;
+font-size: 22px;
+font-weight: 700;
+margin-bottom: 8px;
+}
+
+.food-info p.description {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.price{
+font-size: 24px;
+font-weight: 800;
+color: #ff6600;
+margin-bottom: 15px;
+}
+
+.old-price {
+    font-size: 16px;
+    text-decoration: line-through;
+    color: #aaa;
+    margin-right: 7px;
+    font-weight: 400;
+}
+
+.btn{
+padding: 12px 22px;
+border: none;
+border-radius: 50px;
+margin: 5px;
+font-size: 15px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.cart{
+background: #d92323;
+color: white;
+box-shadow: 0 4px 10px rgba(217,35,35,0.2);
+}
+
+.order{
+background: #ffcc00;
+color: #222;
+box-shadow: 0 4px 10px rgba(255,204,0,0.2);
+}
+
+.btn:hover{
+background: #111;
+color: white;
+transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* REVIEWS SECTION STYLING */
+.reviews-section {
+    background: #fff0e0;
+    padding: 60px 20px;
+    margin-top: 40px;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+}
+
+.review-card {
+    background: white;
+    width: 340px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+    border: 1px solid rgba(255,102,0,0.1);
+}
+
+.stars-rating {
+    color: #ff6600;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.review-text {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.reviewer-name {
+    font-weight: 700;
+    color: #d92323;
+    font-size: 16px;
+}
+
+/* FOOTER */
+.footer{
+background: #111;
+color: #aaa;
+text-align: center;
+padding: 40px 20px;
+border-top: 5px solid #d92323;
+}
+
+.footer h2{
+color: white;
+font-size: 26px;
+margin-bottom: 5px;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 900px) {
+.navbar { padding: 20px; flex-direction: column; gap: 15px; }
+.nav-links a { margin: 0 10px; }
+.heading { font-size: 38px; }
+.food-container { padding: 20px; gap: 25px; }
+.review-card { width: 100%; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">FoodHub</div>
+<div class="nav-links">
+<a href="Untitled-1.html">Home</a>
+<a href="Untitled-2.html" class="active">Menu</a>
+<a href="untitle 3.html">About</a>
+<a href="Untitled-4.html">Contact</a>
+</div>
+</div>
+
+<!-- ================= SECTION 1: EXCLUSIVE DEALS ================= -->
+<h1 class="heading">Exclusive Mega Deals</h1>
+<div class="section-divider"></div>
+
+<div class="food-container">
+
+    <!-- DEAL 1 -->
+    <div class="food-card">
+        <span class="deal-badge">Save 25%</span>
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=500" alt="Buddy Box">
+        <div class="food-info">
+            <h2>Buddy Box Deal</h2>
+            <p class="description">2 Crispy Zinger Burgers + 1 Large Fries + 2 Chilled Cokes</p>
+            <p class="price"><span class="old-price">Rs. 2199</span>Rs. 1649</p>
+            <button class="btn cart" onClick="alert('Added Buddy Box Deal to your cart!')">Add To Cart</button>
+            <button class="btn order" onClick="alert('Proceeding to checkout for Buddy Box Deal!')">Order Now</button>
+        </div>
+    </div>
+
+    <!-- DEAL 2 -->
+    <div class="food-card">
+        <span class="deal-badge">Family Pack</span>
+        <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=500" alt="Family Feast">
+        <div class="food-info">
+            <h2>Family Feast</h2>
+            <p class="description">1 Large Cheese Pizza + 1 White Sauce Pasta + 1 Litre Coke</p>
+            <p class="price"><span class="old-price">Rs. 3399</span>Rs. 2699</p>
+            <button class="btn cart" onClick="alert('Added Family Feast to your cart!')">Add To Cart</button>
+            <button class="btn order" onClick="alert('Proceeding to checkout for Family Feast!')">Order Now</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ================= SECTION 2: REGULAR MENU ================= -->
+<h1 class="heading">Our Premium Menu</h1>
+<div class="section-divider"></div>
+
+<div class="food-container">
+
+    <!-- CHEESE PIZZA -->
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500" alt="Cheese Pizza">
+        <div class="food-info">
+            <h2>Cheese Pizza</h2>
+            <p class="description">Stone-baked crust loaded with premium, melted mozzarella cheese</p>
+            <p class="price">Rs. 1899</p>
+            <button class="btn cart" onClick="alert('Added Cheese Pizza to your cart!')">Add To Cart</button>
+            <button class="btn order" onClick="alert('Proceeding to checkout for Cheese Pizza!')">Order Now</button>
+        </div>
+    </div>
+
+    <!-- ZINGER BURGER -->
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500" alt="Zinger Burger">
+        <div class="food-info">
+            <h2>Zinger Burger</h2>
+            <p class="description">Extra crunchy crispy chicken breast fillet with lettuce and mayo</p>
+            <p class="price">Rs. 899</p>
+            <button class="btn cart" onClick="alert('Added Zinger Burger to your cart!')">Add To Cart</button>
+            <button class="btn order" onClick="alert('Proceeding to checkout for Zinger Burger!')">Order Now</button>
+        </div>
+    </div>
+
+    <!-- WHITE SAUCE PASTA -->
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?q=80&w=500" alt="White Sauce Pasta">
+        <div class="food-info">
+            <h2>White Sauce Pasta</h2>
+            <p class="description">Rich, creamy Alfredo sauce tossed with perfectly boiled fettuccine</p>
+            <p class="price">Rs. 1299</p>
+            <button class="btn cart" onClick="alert('Added White Sauce Pasta to your cart!')">Add To Cart</button>
+            <button class="btn order" onClick="alert('Proceeding to checkout for White Sauce Pasta!')">Order Now</button>
+        </div>
+    </div>
+
+    <!-- CHILLED COKE -->
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=500" alt="Chilled Coke">
+        <div class="food-info">
+            <h2>Chilled Coke</h2>
+            <p class="description">Serve ice-cold to perfectly complement your hot meals</p>
+            <p class="price">Rs. 199</p>
+            <button class="btn cart" onClick="alert('Added Chilled Coke to your cart!')">Add To Cart</button>
+            <button class="btn order" onClick="alert('Proceeding to checkout for Chilled Coke!')">Order Now</button>
+        </div>
+    </div>
+
+</div> 
+
+
+<!-- ================= SECTION 3: CUSTOMER REVIEWS ================= -->
+<div class="reviews-section">
+    <h1 class="heading" style="margin-top: 0;">What Our Foodies Say</h1>
+    <div class="section-divider"></div>
+    
+    <div class="reviews-container">
+        
+        <!-- REVIEW 1 -->
+        <div class="review-card">
+            <div class="stars-rating">RATING: 5/5</div>
+            <p class="review-text">"The White Sauce Pasta is out of this world! So creamy and served steaming hot. The delivery arrived right on time!"</p>
+            <p class="reviewer-name">- Ayesha Khan</p>
+        </div>
+
+        <!-- REVIEW 2 -->
+        <div class="review-card">
+            <div class="stars-rating">RATING: 5/5</div>
+            <p class="review-text">"Ordered the Buddy Box Deal last night. The zinger burgers were incredibly crunchy and saved me good money. Highly recommended!"</p>
+            <p class="reviewer-name">- Zain Ahmed</p>
+        </div>
+
+        <!-- REVIEW 3 -->
+        <div class="review-card">
+            <div class="stars-rating">RATING: 4/5</div>
+            <p class="review-text">"Excellent quality cheese pizza. The crust was soft and loaded with toppings. Will definitely order from FoodHub again."</p>
+            <p class="reviewer-name">- Bilal Mustafa</p>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="footer">
+<h2>FoodHub Menu</h2>
+<p style="margin-top:10px; font-size:14px; letter-spacing:1px;">Fresh Food | Fast Delivery | Best Taste</p>
+</div>
+
+<!-- BACK TO TOP BUTTON -->
+<button id="backToTop" onClick="scrollToTop()" style="position: fixed; bottom: 25px; right: 25px; padding: 15px 18px; background: #d92323; color: white; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 2000; transition: background 0.3s;">UP</button>
+
+<script>
+window.onscroll = function() {
+    let btn = document.getElementById("backToTop");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>
